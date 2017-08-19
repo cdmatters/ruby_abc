@@ -79,5 +79,116 @@ p x[:hello]
 
 puts " ----------------------- " 
 
+puts """The usual control structures are terminated with 'end'.
+This makes sense as there is no strict indenting
+"""
 
+today = Time.now
 
+if today.saturday?
+  puts "today it's Saturday"
+elsif today.sunday?
+  puts "today it's Sunday"
+else
+  puts "its a workday"
+end
+
+puts "Here is a fizz buzz"
+
+i = 1 
+while i < 20
+  if i % 3 == 0 and i % 5 == 0
+    print "fizzbuzz "
+  elsif i % 3 == 0
+    print "fizz "
+  elsif i % 5 == 0
+    print "buzz "
+  else
+    print i, " "
+  end
+  i += 1
+end
+
+puts """Note in ruby, most statements return something.
+Ie x = 5 actually returns 5.
+
+This means you can do stuff like:
+
+while line = gets
+  puts line.downcase
+end
+"""
+
+puts """
+For one-line statements in 'if' or 'while' you can use a statement modifier
+
+eg: puts 'hey' if x == 3
+eg: square = square*square while square < 5
+"""
+
+puts " ----------------------- "
+
+puts """Ruby has built in regex objects, between /here/, and the =~ operator
+returns start postion of found pattern or nil"""
+
+puts "Type a word with hello in it for it to be printed"
+line = gets
+
+if line =~ /hello/
+  print line
+else
+  print "shame..."
+end
+
+print "Subbing hello for bye...:  ", line.sub(/hello/, 'bye')
+
+puts " ----------------------- "
+
+puts """
+Ruby also has chunks of code that can be associated with a method invocation.
+These are either in braces, or between do and end.
+
+eg:
+{puts 'Hello'}
+or:
+do
+  puts 'Howdy'
+  puts 'Hi Hi'
+end
+
+There are subtle differences (brackets bind more tightly) but convention is
+multiline use 'do/end' otherwise braces
+
+If you put a brace after a method invocation, the block will be executed, whenever
+the keyword yield is called. You can pass it args, and they are captures in |pipes| 
+
+def call_block
+  puts 'begin'
+  yield 1
+  yield 4
+  puts 'end
+end
+
+# now call
+
+call_block {|no| print 'in block ', no}
+
+# begin
+# in block 1
+# in block 4
+# end
+
+This effectively becomes a way of doing callbacks and anonymous functions.
+"""
+
+['cat', 'dog', 'horse'].each {|name| print name, " " }
+5.times { print "*" }
+3.upto( 6 )  { |i| print i }
+
+# Also has haskell's incremental completion
+('a'..'e').each {|c| print c}
+
+puts " ----------------------- "
+
+puts "Command line args covered in thw exercises."
+puts "File IO is also covered in thw exercises"
