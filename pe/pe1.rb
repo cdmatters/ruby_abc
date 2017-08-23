@@ -1,9 +1,9 @@
 #!/usr/local/bin/ruby
 def pe1(limit)
-	i = 0 
-	total = 0
-	while i < limit
-		if i % 3 == 0 or i % 5 == 0
+  i = 0 
+  total = 0
+  while i < limit
+    if i % 3 == 0 or i % 5 == 0
       total += i
     end
     i += 1

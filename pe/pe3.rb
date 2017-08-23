@@ -1,7 +1,7 @@
 #!/usr/local/bin/ruby
 def eratosthenes_seive limit
   primes = [ true ] * limit
-	(2..Math.sqrt(limit)).each do |n|
+  (2..Math.sqrt(limit)).each do |n|
     if primes[n]
       primes.map!.with_index { |x, i| (i % n == 0 and i != n )? x && false : x && true }
     end

@@ -44,8 +44,8 @@ There are two ways to do this
 2) Using built-in function attr_reader
    
     class X
-      attr_reader :a :b.  # simply defines READ-ONLY accessor methods for 'names' a, b;
-      attr_writer :c.     # WRITE-ONLY
+      attr_reader :a :b.  # simply defines READ accessor methods for 'names' a, b;
+      attr_writer :c.     # WRITE
       attr_accessor       # READ-WRITE aka ACCESSOR
 
       def initialise (a, b, c, d, e)
@@ -86,5 +86,30 @@ at.virtual_attribute = 567
 puts at.virtual_attribute
 puts at.read_only_int
 
-virtual_attribute
+# This is quite naughty getting around the READ ONLY and shows that in ruby: 
+puts """
+'Real' attributes (instance variables) are mutable, but **private by default**,
+Therefore you only expose them by defining accessors for reading and writing.
+
+But if you dont have an instance variable, you can just define 2 methods 'def x()' and 'def x=(rhs)'
+and these are separate methods, which enable you do reading and assignment none the less.
+
+These are called 'Virtual' Attributes and mean you can define your interface, 
+while hiding your implementation. They look and behave just like attributes. 
+
+See example AccessThis in this file to look.
+"""
+
+puts "-------------------------------------"
+
+
+puts """
+We can refer/import other files using the require keyword:
+
+require 'csv' # requires Ruby's csv module
+require_relative 'xyz' #requires a module relative to this one
+
+"""
+
+
 
